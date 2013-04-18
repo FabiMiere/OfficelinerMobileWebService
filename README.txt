@@ -37,5 +37,3 @@ http://stackoverflow.com/
 
 or on the mailing Group at:
 http://groups.google.com/group/servicestack
-
-Enjoy!
