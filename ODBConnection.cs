@@ -28,7 +28,7 @@ namespace OfficelinerMobileWebService
             }
         }
 
-        public ODBConnection(string dataSource ="olxsrv", string userID ="fabian", string password = "fabian") {
+        public ODBConnection(string dataSource, string userID, string password) {
             
             //init tasks
             ConnectionString = String.Empty;
@@ -36,45 +36,14 @@ namespace OfficelinerMobileWebService
             UserID = userID;
             Password = password;
 
-            //build the connectionString for the Database connection
-            ConnectionString = String.Format("Data Source={0};Persist Security Info=True; Password={1}; User ID={2}", DataSource, Password, UserID);
+            if (DataSource.Length > 0 && UserID.Length > 0 && Password.Length > 0)
+            {
+                //build the connectionString for the Database connection
+                ConnectionString = String.Format("Data Source={0};Persist Security Info=True; Password={1}; User ID={2}", DataSource, Password, UserID);
+            }
             
             //connection
             _connection = new OracleConnection(ConnectionString);
         }
-
-        //If the connection could be open, the function returns true, else the function returns false
-        public bool openConnection()
-        {
-            try
-            {
-                _connection.Open();
-                return true;
-            }
-
-            catch (Exception e)
-            {
-                return false;
-            }
-
-        }
-
-        //Return true, if the connection was closed without a exception
-        public bool closeConnection()
-        {
-            try
-            {
-                _connection.Close();
-                _connection.Dispose();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
-        }
-
-       
     }
 }
