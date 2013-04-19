@@ -9,8 +9,8 @@ namespace OfficelinerMobileWebService
 {
     public class SKR04
     {
-        String ACCNO;
-        String Description;
+        public String ACCNO { get; set; }
+        public String Description { get; set; }
 
 
         public List<SKR04> GetSkr04(OracleConnection connection)
@@ -32,7 +32,9 @@ namespace OfficelinerMobileWebService
             skr04response.Result.Add(value);
         }
 
-        return skr04response.Result;
+
+
+            return skr04response.Result;
         }
     }
 

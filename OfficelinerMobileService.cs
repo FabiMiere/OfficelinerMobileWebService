@@ -26,7 +26,7 @@ namespace OfficelinerMobileWebService
 
 
         //Login only build a connection to the server and get a Session ID
-        public object Any(Login request)
+        public object Get(Login request)
         {
             //Insert a delegate here, to a other class maybe some actions with the request String here or delegate these action to a helper
             //return a value here
@@ -54,29 +54,15 @@ namespace OfficelinerMobileWebService
             {
                 SKR04response.Result = skr04request.GetSkr04(OraConnection);
 
-                String output = "";
-
-                foreach (var i in SKR04response.Result)
-                {
-                    output = output + i.ToString();
-                }
-
-                return output;
-                //return SKR04response.Result;
-                //Wie gehts weiter?! Wieso gibt er mir ein leeres Array zurück?!
-
+                return SKR04response.Result;
             }
             else
             {
                 return "Please Login before you request";
             }
-
-
-
             //return response.Result;
-            
-
         }
+
 
         //Get the SKR04
         public object Any(SKR04 request)
@@ -85,12 +71,20 @@ namespace OfficelinerMobileWebService
             if (OraConnection != null)
             {
                 response.Result = request.GetSkr04(OraConnection);
+
                 return response.Result;
             }
             else
             {
                 return "Please Login before you request";
             }
+        }
+
+        
+        public object Get(BusinessPartnerMethods request)
+        {
+            var ret = request.GetBusinessPartner();
+            return ret;
         }
     }
 }

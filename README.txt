@@ -1,3 +1,10 @@
+OfficelinerMobileWebService Testprojekt
+
+
+
+
+Informationen zu ServiceStack und Swagger:
+
 ServiceStack services should be available under '/api' path. If it's a brand new MVC project 
 install NuGet Package: ServiceStack.Host.Mvc. The package prepares ServiceStack default services. Make sure 
 that you added ignore for MVC routes:
